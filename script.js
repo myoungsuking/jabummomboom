@@ -1,14 +1,14 @@
 class PokemonBattle {
     constructor() {
         this.enemy = {
-            name: "마그케인",
+            name: "엄마몬",
             maxHp: 92,
             currentHp: 67,
             level: 34
         };
         
         this.player = {
-            name: "나드킹",
+            name: "재범몬",
             maxHp: 100,
             currentHp: 100,
             level: 33
@@ -22,7 +22,7 @@ class PokemonBattle {
         this.initializeElements();
         this.initializeEventListeners();
         this.updateHealthDisplay();
-        this.showMessage("나드킹이 마그케인에게 폭탄을 던질 준비가 되었다!");
+        this.showMessage("재범몬이 엄마몬에게 폭탄을 던질 준비가 되었다!");
     }
     
     initializeElements() {
@@ -52,7 +52,7 @@ class PokemonBattle {
         this.hitCount++;
         
         // 공격 메시지
-        this.showMessage(`나드킹이 폭탄을 던졌다! (${this.hitCount}/${this.maxHits})`);
+        this.showMessage(`재범몬이 폭탄을 던졌다! (${this.hitCount}/${this.maxHits})`);
         
         // 폭탄 던지기 애니메이션
         await this.throwBomb();
@@ -75,9 +75,9 @@ class PokemonBattle {
         if (this.enemy.currentHp <= 0) {
             this.showVictory();
         } else if (this.hitCount >= this.maxHits) {
-            this.showMessage("나드킹의 공격이 끝났다! 마그케인이 아직 살아있다!");
+            this.showMessage("재범몬의 공격이 끝났다! 엄마몬이 아직 살아있다!");
         } else {
-            this.showMessage(`마그케인에게 ${damage}의 데미지! 남은 공격: ${this.maxHits - this.hitCount}번`);
+            this.showMessage(`엄마몬에게 ${damage}의 데미지! 남은 공격: ${this.maxHits - this.hitCount}번`);
         }
         
         this.isAttacking = false;
@@ -150,7 +150,7 @@ class PokemonBattle {
     }
     
     showVictory() {
-        this.showMessage("🎉 마그케인이 쓰러졌다! 나드킹이 승리했다! 🎉");
+        this.showMessage("🎉 엄마몬이 쓰러졌다! 재범몬이 승리했다! 🎉");
         this.fightBtn.textContent = "게임 종료";
         this.fightBtn.className = "menu-item disabled";
         
