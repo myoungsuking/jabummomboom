@@ -35,6 +35,7 @@ class PokemonBattle {
         this.bombAnimation = document.getElementById('bomb-animation');
         this.messageBox = document.getElementById('message-box');
         this.messageText = document.getElementById('message-text');
+        this.centerMessage = document.getElementById('center-message');
     }
     
     initializeEventListeners() {
@@ -66,6 +67,11 @@ class PokemonBattle {
         
         // 포켓몬 피격 애니메이션
         this.showHitAnimation();
+        
+        // 엄마몬 대사 (엄마몬이 아직 살아있을 때만)
+        if (this.enemy.currentHp > 0) {
+            this.showCenterMessage();
+        }
         
         // 체력 업데이트
         this.updateHealthDisplay();
@@ -189,6 +195,16 @@ class PokemonBattle {
         setTimeout(() => {
             this.messageText.style.animation = 'typing 0.5s steps(40, end)';
         }, 10);
+    }
+    
+    showCenterMessage() {
+        // 화면 중앙에 엄마몬 대사 표시
+        this.centerMessage.className = 'center-message show';
+        
+        // 2초 후에 자동으로 사라짐
+        setTimeout(() => {
+            this.centerMessage.className = 'center-message';
+        }, 2000);
     }
     
     sleep(ms) {

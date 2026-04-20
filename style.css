@@ -291,6 +291,55 @@ body {
     align-items: center;
 }
 
+/* 화면 중앙 메시지 (엄마몬 대사) */
+.center-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    border: 6px solid #FF1493;
+    border-radius: 20px;
+    padding: 30px 50px;
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+}
+
+.center-message-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #FF1493;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+.center-message.show {
+    display: block;
+    animation: centerPop 2s ease-in-out;
+}
+
+@keyframes centerPop {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    20% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .enemy-section {
@@ -313,5 +362,13 @@ body {
         bottom: 120px;
         right: 270px;
         font-size: 14px;
+    }
+    
+    .center-message-text {
+        font-size: 24px;
+    }
+    
+    .center-message {
+        padding: 20px 30px;
     }
 }
